@@ -9,11 +9,6 @@ function draw_target()
     local SEGMENT_LENGTH = 20
     local TARGET_COLOR = COLOR.GREEN1
 
-    --[[
-        We want our target to appear when we are zoomed 10x so we check
-        if zoom key is pressed when we currently are zoomed 5x
-     --]]
-
     if MODE.MOVIE ~= camera.mode and false == menu.visible and true == lv.enabled and 10 == lv.zoom then
 
         -- display a 5px radius circle on center of display
