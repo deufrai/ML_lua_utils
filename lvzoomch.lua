@@ -16,12 +16,7 @@ event.keypress = function(key)
 
         if true == lv.enabled and 5 == lv.zoom then
 
-            draw_target()
-        end
-
-        while 10 == lv.zoom do
-
-            draw_target()
+            display.draw(draw_target)
         end
     end
 
