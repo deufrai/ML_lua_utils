@@ -24,4 +24,6 @@ event.keypress = function(key)
             draw_target()
         end
     end
+
+    return true
 end
