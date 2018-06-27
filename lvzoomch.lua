@@ -2,15 +2,54 @@
 
 function draw_target()
 
-    -- display a 5px radious circle on center of display
+    local CIRCLE_RADIUS = 5
+    local DISPLAY_CENTER_X = display.width / 2
+    local DISPLAY_CENTER_Y = display.height / 2
+    local SPACING = 10
+    local SEGMENT_LENGTH = 20
+    local TARGET_COLOR = COLOR.GREEN1
+
+    -- display a 5px radius circle on center of display
     display.circle(
-
-        display.width / 2,
-        display.height / 2,
-        5,
-        COLOR.GREEN1
-
+        DISPLAY_CENTER_X,
+        DISPLAY_CENTER_Y,
+        CIRCLE_RADIUS,
+        TARGET_COLOR
     )
+
+    -- display crosshair
+    display.line(
+        DISPLAY_CENTER_X,
+        DISPLAY_CENTER_Y - (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+        DISPLAY_CENTER_X,
+        DISPLAY_CENTER_Y - (CIRCLE_RADIUS + SPACING),
+        TARGET_COLOR
+    )
+
+    display.line(
+        DISPLAY_CENTER_X,
+        DISPLAY_CENTER_Y + (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+        DISPLAY_CENTER_X,
+        DISPLAY_CENTER_Y + (CIRCLE_RADIUS + SPACING),
+        TARGET_COLOR
+    )
+
+    display.line(
+        DISPLAY_CENTER_X - (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+        DISPLAY_CENTER_Y,
+        DISPLAY_CENTER_X - (CIRCLE_RADIUS + SPACING),
+        DISPLAY_CENTER_Y,
+        TARGET_COLOR
+    )
+
+    display.line(
+        DISPLAY_CENTER_X + (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+        DISPLAY_CENTER_Y,
+        DISPLAY_CENTER_X + (CIRCLE_RADIUS + SPACING),
+        DISPLAY_CENTER_Y,
+        TARGET_COLOR
+    )
+
 end
 
 event.keypress = function(key)
