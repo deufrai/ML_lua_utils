@@ -27,7 +27,7 @@ function draw_target()
 
     if MODE.MOVIE ~= camera.mode and false == menu.visible and true == lv.enabled and 10 == lv.zoom then
 
-        -- display a 5px radius circle on center of display
+        -- display a circle on center of display
         display.circle(
             DISPLAY_CENTER_X,
             DISPLAY_CENTER_Y,
