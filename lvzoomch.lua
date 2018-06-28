@@ -27,48 +27,55 @@ function draw_target()
 
     if MODE.MOVIE ~= camera.mode and false == menu.visible and true == lv.enabled and 10 == lv.zoom then
 
-        -- display a circle on center of display
-        display.circle(
-            DISPLAY_CENTER_X,
-            DISPLAY_CENTER_Y,
-            CIRCLE_RADIUS,
-            TARGET_COLOR
-        )
+        -- avoid redrawing when not needed
+        -- for this, we check the color of the central pixel
+        if TARGET_COLOR ~= display.pixel(DISPLAY_CENTER_X, DISPLAY_CENTER_Y) then
 
-        -- display crosshair
-        display.line(
-            DISPLAY_CENTER_X,
-            DISPLAY_CENTER_Y - (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
-            DISPLAY_CENTER_X,
-            DISPLAY_CENTER_Y - (CIRCLE_RADIUS + SPACING),
-            TARGET_COLOR
-        )
+            -- display center point
+            display.pixel(DISPLAY_CENTER_X, DISPLAY_CENTER_Y, TARGET_COLOR)
 
-        display.line(
-            DISPLAY_CENTER_X,
-            DISPLAY_CENTER_Y + (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
-            DISPLAY_CENTER_X,
-            DISPLAY_CENTER_Y + (CIRCLE_RADIUS + SPACING),
-            TARGET_COLOR
-        )
+            -- display a circle on center of display
+            display.circle(
+                DISPLAY_CENTER_X,
+                DISPLAY_CENTER_Y,
+                CIRCLE_RADIUS,
+                TARGET_COLOR
+            )
 
-        display.line(
-            DISPLAY_CENTER_X - (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
-            DISPLAY_CENTER_Y,
-            DISPLAY_CENTER_X - (CIRCLE_RADIUS + SPACING),
-            DISPLAY_CENTER_Y,
-            TARGET_COLOR
-        )
+            -- display crosshair
+            display.line(
+                DISPLAY_CENTER_X,
+                DISPLAY_CENTER_Y - (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+                DISPLAY_CENTER_X,
+                DISPLAY_CENTER_Y - (CIRCLE_RADIUS + SPACING),
+                TARGET_COLOR
+            )
 
-        display.line(
-            DISPLAY_CENTER_X + (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
-            DISPLAY_CENTER_Y,
-            DISPLAY_CENTER_X + (CIRCLE_RADIUS + SPACING),
-            DISPLAY_CENTER_Y,
-            TARGET_COLOR
-        )
+            display.line(
+                DISPLAY_CENTER_X,
+                DISPLAY_CENTER_Y + (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+                DISPLAY_CENTER_X,
+                DISPLAY_CENTER_Y + (CIRCLE_RADIUS + SPACING),
+                TARGET_COLOR
+            )
+
+            display.line(
+                DISPLAY_CENTER_X - (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+                DISPLAY_CENTER_Y,
+                DISPLAY_CENTER_X - (CIRCLE_RADIUS + SPACING),
+                DISPLAY_CENTER_Y,
+                TARGET_COLOR
+            )
+
+            display.line(
+                DISPLAY_CENTER_X + (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+                DISPLAY_CENTER_Y,
+                DISPLAY_CENTER_X + (CIRCLE_RADIUS + SPACING),
+                DISPLAY_CENTER_Y,
+                TARGET_COLOR
+            )
+        end
     end
-
 end
 
 event.seconds_clock = function(arg)
