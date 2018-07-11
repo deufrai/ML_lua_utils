@@ -19,13 +19,14 @@
 function draw_target()
 
     local CIRCLE_RADIUS = 5
-    local DISPLAY_CENTER_X = display.width / 2
-    local DISPLAY_CENTER_Y = display.height / 2
+    local DISPLAY_HEIGHT = display.height
+    local DISPLAY_WIDTH = display.width
+    local DISPLAY_CENTER_X = DISPLAY_WIDTH / 2
+    local DISPLAY_CENTER_Y =  DISPLAY_HEIGHT / 2
     local SPACING = 10
-    local SEGMENT_LENGTH = 20
     local TARGET_COLOR = COLOR.GREEN1
 
-    if MODE.MOVIE ~= camera.mode and false == menu.visible and true == lv.enabled and 10 == lv.zoom then
+    if MODE.MOVIE ~= camera.mode and false == menu.visible and true == lv.enabled then
 
         -- avoid redrawing when not needed
         -- for this, we check the color of the central pixel
@@ -45,7 +46,7 @@ function draw_target()
             -- display crosshair
             display.line(
                 DISPLAY_CENTER_X,
-                DISPLAY_CENTER_Y - (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+                0,
                 DISPLAY_CENTER_X,
                 DISPLAY_CENTER_Y - (CIRCLE_RADIUS + SPACING),
                 TARGET_COLOR
@@ -53,14 +54,14 @@ function draw_target()
 
             display.line(
                 DISPLAY_CENTER_X,
-                DISPLAY_CENTER_Y + (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+                DISPLAY_HEIGHT,
                 DISPLAY_CENTER_X,
                 DISPLAY_CENTER_Y + (CIRCLE_RADIUS + SPACING),
                 TARGET_COLOR
             )
 
             display.line(
-                DISPLAY_CENTER_X - (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+                0,
                 DISPLAY_CENTER_Y,
                 DISPLAY_CENTER_X - (CIRCLE_RADIUS + SPACING),
                 DISPLAY_CENTER_Y,
@@ -68,7 +69,7 @@ function draw_target()
             )
 
             display.line(
-                DISPLAY_CENTER_X + (CIRCLE_RADIUS + SPACING + SEGMENT_LENGTH),
+                DISPLAY_WIDTH,
                 DISPLAY_CENTER_Y,
                 DISPLAY_CENTER_X + (CIRCLE_RADIUS + SPACING),
                 DISPLAY_CENTER_Y,
